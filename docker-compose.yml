@@ -1,0 +1,24 @@
+version: '3'
+services:
+  postgres:
+    image: "postgres:latest"
+    restart: always
+    volumes:
+      - ttrssdb:/var/lib/postgresql
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=azerty
+
+  ttrss:
+    image: "tonybounty/tinytinyrss:1.15.3"
+    restart: always
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=admin
+      - DB_PASS=azerty
+      - DB_NAME=ttrss
+    depends_on:
+      - postgres
+
+volumes:
+  ttrssdb:
