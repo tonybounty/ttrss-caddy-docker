@@ -1,0 +1,7 @@
+0.0.0.0
+root /srv
+log stdout
+errors stderr
+internal /var/cache/ttrss 
+fastcgi / /run/php/php7-fpm.sock php
+tls off
